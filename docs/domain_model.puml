@@ -1,0 +1,79 @@
+@startuml
+
+class User {
+    +userId
+    +name
+    +email
+    +phoneNumber
+    +bloodType
+    +location
+}
+
+class Search {
+    +query
+    +filters
+}
+
+class SignUp {
+    +username
+    +password
+    +email
+    +bloodType
+}
+
+class Login {
+    +username
+    +password
+}
+
+class BloodRequest {
+    +requestId
+    +bloodType
+    +urgency
+    +location
+    +status
+    +requestedDate
+}
+
+class BloodDonor {
+    +donorId
+    +name
+    +bloodType
+    +availability
+    +healthConditions
+}
+
+class Hospital {
+    +hospitalId
+    +name
+    +location
+    +contactInfo
+    +bloodStock
+}
+
+class BloodBank {
+    +bankId
+    +name
+    +location
+    +contactInfo
+    +availableBloodTypes
+}
+
+class Notification {
+    +message
+    +timestamp
+}
+
+User "1" -- "0..*" Search : performs
+Search "1" -- "1..*" BloodBank : checks
+User "1" -- "0..1" SignUp : registers
+User "1" -- "0..1" Login : logsIn
+User "1" -- "0..*" BloodRequest : creates
+User "1" -- "0..*" Notification : receives
+User "1" -- "0..1" BloodDonor : becomes
+BloodDonor "1" -- "0..*" Hospital : donatesTo
+BloodDonor "1" -- "0..*" BloodBank : donatesTo
+Hospital "1" -- "0..*" BloodRequest : receives
+Hospital "1" -- "1" BloodBank : contactsForBlood
+
+@enduml
