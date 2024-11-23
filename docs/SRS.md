@@ -10,11 +10,10 @@ Table of Contents
 =================
 * [Revision History](#revision-history)
 * [1. Introduction](#1-introduction)
-  * [1.1 Purpose](#11-document-purpose)
-  * [1.2 Scope](#12-product-scope)
-  * [1.3 Definitions, Acronyms, and Abbreviations](#13-definitions-acronyms-and-abbreviations)
-  * [1.4 References](#14-references)
-  * [1.5 Overview](#15-document-overview)
+  * [1.1 Document Purpose](#11-document-purpose)
+  * [1.2 Product Scope](#12-product-scope)
+  * [1.3 References](#13-references)
+  * [1.4 Document Overview](#14-document-overview)
 * [2. Overall Description](#2-overall-description)
   * [2.1 Product Perspective](#21-product-perspective)
   * [2.2 Product Features](#22-product-features)
@@ -22,7 +21,6 @@ Table of Contents
   * [2.4 Operating Environment](#24-operating-environment)
   * [2.5 Constraints](#25-constraints)
   * [2.6 Assumptions and Dependencies](#26-assumptions-and-dependencies)
-  * [2.7 Apportioning of Requirements](#27-apportioning-of-requirements)
 * [3. Specific Requirements](#3-specific-requirements)
   * [3.1 Functional Requirements](#31-functional-requirements)
   * [3.2 External Interface Requirements](#32-external-interface-requirements)
@@ -35,7 +33,8 @@ Table of Contents
     * [3.3.2 Safety Requirements](#332-safety-requirements)
     * [3.3.3 Security Requirements](#333-security-requirements)
     * [3.3.4 Software Quality Attributes](#334-software-quality-attributes)
-* [4. Other Nonfunctional Requirements](#4-other-nonfunctional-requirements)
+* [4. Legal and Regulatory Requirements](#4-legal-and-regulatory-requirements)
+  * [4.1 Data Protection](#41-data-protection)
 * [5. Appendices](#5-appendices)
 
 ## Revision History
@@ -68,61 +67,81 @@ Table of Contents
 </table>
 
 ## 1. Introduction
-> This section should provide an overview of the entire document
 
 ### 1.1 Document Purpose
-Describe the purpose of the SRS and its intended audience.
+This document specifies the functional and non-functional requirements for BloodConnect, 
+a platform designed to bridge the gap between blood donors and recipients. 
+It aims to provide a detailed description of the system's functionality,
+ensuring effective communication among stakeholders, including developers, users, and regulators.
 
 ### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+BloodConnect is a software platform that establishes communication between blood donors and requesters. 
+It addresses the problem of delayed access to blood in emergencies by providing a user-friendly interface to manage blood requests, 
+donor profiles, and donation including:
+- Enabling users to post blood requests specifying type, urgency, and location.
+- Allowing donors to view requests, filter based on their compatibility, and schedule donations.
+- Providing a secure, scalable, and user-friendly solution accessible via web and mobile platforms.
 
-### 1.3 Definitions, Acronyms and Abbreviations
+### 1.3 References
+[OWASP Guidelines](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
 
-### 1.4 References
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
-
-### 1.5 Document Overview
-Describe what the rest of the document contains and how it is organized.
+### 1.4 Document Overview
+This SRS is structured to provide an overview of BloodConnect, its functionality,
+and the requirements necessary for its development and implementation. Specific details on system architecture,
+user interactions, and design considerations are outlined in subsequent sections.
 
 ## 2. Overall Description
-> This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
-
+  
 ### 2.1 Product Perspective
-Describe the context and origin of the product being specified in this SRS. For example, state whether this product is a follow-on member of a product family, a replacement for certain existing systems, or a new, self-contained product. If the SRS defines a component of a larger system, relate the requirements of the larger system to the functionality of this software and identify interfaces between the two. A simple diagram that shows the major components of the overall system, subsystem interconnections, and external interfaces can be helpful.
+#### Problem:
+- Access to blood for medical emergencies and surgeries is often challenging due to inadequate communication between donors and recipients. This results in critical delays that can endanger lives. Current systems lack an efficient platform where individuals can easily request or donate blood, often requiring time-consuming manual processes or dependence on local blood banks with limited resources.  
+The proposed platform aims to bridge this gap by providing an accessible, user-friendly solution for facilitating blood donations. It ensures that blood recipients can connect with donors promptly while adhering to essential medical and regulatory guidelines.
+
+#### Solution:
+- It’s a platform designed to bridge the gap between those in urgent need of blood and willing donors. In critical medical situations, such as surgeries, emergencies, and life-threatening conditions, finding the right blood type in time can be a matter of life or death. Blood Connect provides an intuitive and reliable interface to facilitate blood requests, manage donor profiles, and streamline the process of connecting recipients with nearby eligible donors.
+- The platform allows users to create blood requests, specifying blood type and location, while enabling donors to view requests in their area and schedule donation appointments. With search and filter options, users can find compatible donors, blood banks, and hospitals with ease.
 
 ### 2.2 Product Features
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
-
+Product features include:
+- User signing up for the site.
+- User choosing either to become a donor or to request blood.
+- Identifying nearby hospitals or blood banks via map integration.
+- Communication with said hospitals and blood banks.
+- Ability to search for the blood type the user needs via search bar.
+- 
 ### 2.3 User Classes and Characteristics
-Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
+**Donors**: They will donate blood to either blood banks or hospitals through our platform.
+**Recipients/Requesters**: People who create urgent blood requests.
+**Hospitals/BloodBanks**: Institutions who will manage blood requests, and communicate with our platform to check the requests of users or accept donations of donors.  
+**Admins**: Developers and admins who will manage our website.
 
 ### 2.4 Operating Environment
-Specify the environment in which the software will operate, including hardware, operating systems, and other software with which it must interface.
+**Web Platform:** Compatible with modern browsers (Chrome, Firefox, Safari).  
+**Mobile Platform:** Applications for Android and iOS devices
 
 ### 2.5 Constraints
-List any global constraints that apply to the product, including regulatory policies, hardware limitations, and development constraints.
+Adherence to medical guidelines and local egyptian regulations for blood donation.
 
 ### 2.6 Assumptions and Dependencies
-List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).
 
-### 2.7 Apportioning of Requirements
-Apportion the software requirements to software elements. For requirements that will require implementation over multiple software elements, or when allocation to a software element is initially undefined, this should be so stated. A cross reference table by function and software element should be used to summarize the apportioning.
 
-Identify requirements that may be delayed until future versions of the system (e.g., blocks and/or increments).
-
-## 3. Specific Requirements
-> This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
-
-> The specific requirements should:
-* Be uniquely identifiable.
-* State the subject of the requirement (e.g., system, software, etc.) and what shall be done.
-* Optionally state the conditions and constraints, if any.
-* Describe every input (stimulus) into the software system, every output (response) from the software system, and all functions performed by the software system in response to an input or in support of an output.
-* Be verifiable (e.g., the requirement realization can be proven to the customer's satisfaction)
-* Conform to agreed upon syntax, keywords, and terms.
+## 3. Requirements
 
 ### 3.1 Functional Requirements
-> This subsection lists the functional requirements of the product.
+
+Functional requirements:
+1. User Registration: Users (donors and recipients) can create accounts and log in securely
+2. Profile Management: Users can update their profiles with additional details, such as contact preferences.
+3. Blood Request Management: Recipients can post requests specifying blood type, urgency level, and location.
+4. Blood Donation Management: Donors can view active blood requests and respond to those matching their blood type
+5. Search and Filtration: Users can filter and search by location, blood typem or request date for efficient matching
+6. Health Tips for Blood Donation: A section offering tips and guidelines on safe blood donation practices to encourage and educate donors
+7. Donation History: users can view past donation activities, including dates, locations, and recipients
+8. Emergency Contacts and Support: a directory of emergency contacts for blood banks, hospitals, and customer support for immediate assistance.
+9. FAQs and Guidance: A repository of frequently asked questions and guides to help users understand how the platform works and the importance of blood donation.
+10. Map Integration: Integration with mapping services to show blood banks, and hospitals with ease
+11. Notifications and alerts: Real-time alerts for new matches, updates on requests, or reminders for eligible donation dates
+12. Feedback and Rating System: Users can rate their experience to build trust and improve platform services. 
 
 ### 3.2 External Interface Requirements
 #### 3.2.1 User Interfaces
@@ -132,11 +151,26 @@ Identify requirements that may be delayed until future versions of the system (e
 
 ### 3.3 Non-functional Requirements
 #### 3.3.1 Performance Requirements
-#### 3.3.2 Safety Requirements
-#### 3.3.3 Security Requirements
-#### 3.3.4 Software Quality Attributes
+- The platform should handle up to 40,000 concurrent users efficiently, ensuring smooth operations.
+- Search results must load within 2-3 seconds.
 
-## 4. Other Nonfunctional Requirements
-> Describe any additional requirements not covered elsewhere.
+#### 3.3.2 Safety Requirements
+
+#### 3.3.3 Security Requirements
+
+- Adhere to OWASP guidelines to defend maintain security and prevent attacks such as SQL injection, cross-site scripting (XSS) and sensitive data exposure.
+- Implement OWASP-recommended secure coding practices to mitigate the risk of the attacks mentioned above from happening.
+
+#### 3.3.4 Software Quality Attributes
+- **Usability**: The platform should be easy to use and accessible to different categories of people with varying levels of technical proficiency.
+- **Scalability**: Accommodate a growing number of users and new regions.
+- **Compatibility**: Ensure support across web browsers and mobile devices including IOS and Android devices.
+- **Reliability**: The system should maintain high uptime (99.9%) and include mechanisms to avoid service disruptions.
+- **Accessibility**: Include support for screen readers to support those with disabilities.
+
+## 4 Legal and Regulatory Requirements
+
+### 4.1 Data Protection
+Compliance with Egyptian data protection law. ( Law No. 151 of 2020 )
 
 ## 5. Appendices
