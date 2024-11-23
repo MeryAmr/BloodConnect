@@ -108,7 +108,6 @@ Product features include:
 - Identifying nearby hospitals or blood banks via map integration.
 - Communication with said hospitals and blood banks.
 - Ability to search for the blood type the user needs via search bar.
-- 
 ### 2.3 User Classes and Characteristics
 **Donors**: They will donate blood to either blood banks or hospitals through our platform.
 **Recipients/Requesters**: People who create urgent blood requests.
