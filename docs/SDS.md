@@ -31,7 +31,7 @@
 
 ## Domain Model
 
-- [Domain Model](domain_model.puml)
+- [Domain Model](diagrams/domain_model.puml)
 
 ## Design Diagrams
 

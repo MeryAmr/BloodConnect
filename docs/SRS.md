@@ -21,7 +21,7 @@ Table of Contents
   * [2.4 Operating Environment](#24-operating-environment)
   * [2.5 Constraints](#25-constraints)
   * [2.6 Assumptions and Dependencies](#26-assumptions-and-dependencies)
-* [3. Specific Requirements](#3-specific-requirements)
+* [3. Specific Requirements](#3-requirements)
   * [3.1 Functional Requirements](#31-functional-requirements)
   * [3.2 External Interface Requirements](#32-external-interface-requirements)
     * [3.2.1 User Interfaces](#321-user-interfaces)

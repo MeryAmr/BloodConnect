@@ -1,0 +1,98 @@
+@startuml
+
+class User {
+    +userId: String
+    +name: String
+    +email: String
+    +phoneNumber: String
+    +bloodType: String
+    +location: String
+    +register(): void
+    +login(): void
+    +createRequest(): BloodRequest
+    +viewNotifications(): List<Notification>
+    +becomeDonor(): BloodDonor
+}
+
+class Search {
+    +query: String
+    +filters: Map<String, String>
+    +searchBloodBanks(): List<BloodBank>
+    +searchRequests(): List<BloodRequest>
+}
+
+class SignUp {
+    +username: String
+    +password: String
+    +email: String
+    +bloodType: String
+    +signUp(): User
+}
+
+class Login {
+    +username: String
+    +password: String
+    +authenticate(): Boolean
+}
+
+class BloodRequest {
+    +requestId: String
+    +bloodType: String
+    +urgency: String
+    +location: String
+    +status: String
+    +requestedDate: Date
+    +updateStatus(status: String): void
+    +cancelRequest(): void
+}
+
+class BloodDonor {
+    +donorId: String
+    +name: String
+    +bloodType: String
+    +availability: Boolean
+    +healthConditions: String
+    +donateToHospital(hospital: Hospital): void
+    +donateToBloodBank(bank: BloodBank): void
+}
+
+class Hospital {
+    +hospitalId: String
+    +name: String
+    +location: String
+    +contactInfo: String
+    +bloodStock: Map<String, Integer>
+    +addBloodStock(bloodType: String, quantity: Integer): void
+    +processRequest(request: BloodRequest): void
+    +contactBloodBank(bloodBank: BloodBank): void
+}
+
+class BloodBank {
+    +bankId: String
+    +name: String
+    +location: String
+    +contactInfo: String
+    +availableBloodTypes: Map<String, Integer>
+    +addBlood(bloodType: String, quantity: Integer): void
+    +distributeBlood(request: BloodRequest): void
+}
+
+class Notification {
+    +message: String
+    +timestamp: Date
+    +sendNotification(user: User): void
+}
+
+User "1" -- "0..*" Search : performs
+Search "1" -- "1..*" BloodBank : checks
+User "1" -- "0..1" SignUp : registers
+User "1" -- "0..1" Login : logsIn
+User "1" -- "0..*" BloodRequest : creates
+User "1" -- "0..*" Notification : receives
+User "1" -- "0..1" BloodDonor : becomes
+BloodDonor "1" -- "0..*" Hospital : donatesTo
+BloodDonor "1" -- "0..*" BloodBank : donatesTo
+Hospital "1" -- "0..*" BloodRequest : receives
+Hospital "1" -- "1" BloodBank : contactsForBlood
+
+@enduml
