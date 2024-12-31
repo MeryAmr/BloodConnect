@@ -41,8 +41,8 @@ class BloodRequest {
     +urgency: String
     +location: String
     +status: String
-    +requestedDate: Date
-    +updateStatus(status: String): void
+    +requestedDate: String
+    +sendRequest() : BloodRequest
     +cancelRequest(): void
 }
 
