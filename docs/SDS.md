@@ -33,5 +33,6 @@
 
 - [Domain Model](diagrams/domain_model.puml)
 - [SDS](https://docs.google.com/document/d/1OR9eBksKUiGZma_QbLJcEHwOAHB_FlHuoPR4K7HY0Yg/edit?tab=t.0)
+- [ERD Diagram](https://miro.com/app/board/uXjVLyLiThE=/?share_link_id=510377487749)
 ## Design Diagrams
 
