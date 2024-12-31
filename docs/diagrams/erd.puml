@@ -1,0 +1,43 @@
+@startuml
+
+entity "User" as U {
+  + Long userId
+  + String name
+  + String email
+  + String phoneNumber
+  + String bloodType
+  + String location
+}
+
+entity "BloodRequest" as BR {
+  + Long requestId
+  + String bloodType
+  + String urgency
+  + String location
+  + String status
+  + LocalDate requestedDate
+  + Long user_id
+}
+
+entity "BloodBank" as BB {
+  + String bankId
+  + String name
+  + String location
+  + String contactInfo
+  + Map<String, Integer> availableBloodTypes
+}
+
+entity "BloodDonor" as BD {
+  + String donorId
+  + String name
+  + String bloodType
+  + Boolean availability
+  + String healthConditions
+}
+
+U ||--o{ BR : "has"
+BR ||--|| BB : "fulfilled by"
+BD }o--|| BB : "donates to"
+BD }o--|| U : "donates to"
+
+@enduml
