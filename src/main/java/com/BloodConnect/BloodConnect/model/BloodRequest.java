@@ -1,13 +1,16 @@
 package com.BloodConnect.BloodConnect.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Setter
 @Getter
+@AllArgsConstructor
+@ToString
+@NoArgsConstructor
+@Table(name = "blood_requests")
 @Entity
 public class BloodRequest {
     @Id
