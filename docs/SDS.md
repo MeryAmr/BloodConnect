@@ -34,5 +34,8 @@
 - [Domain Model](diagrams/domain_model.puml)
 - [SDS](https://docs.google.com/document/d/1OR9eBksKUiGZma_QbLJcEHwOAHB_FlHuoPR4K7HY0Yg/edit?tab=t.0)
 - [ERD Diagram](https://miro.com/app/board/uXjVLyLiThE=/?share_link_id=510377487749)
+- [State Diagram](https://lucid.app/lucidchart/a015feec-8701-41ee-8c8f-c6e96eea1637/edit?viewport_loc=69%2C-236%2C2736%2C1560%2C0_0&invitationId=inv_91fc836c-cea0-4500-9b89-dbc740ea62a6)
+- [Activity flow Diagram](https://miro.com/app/board/uXjVL3byOD8=/)
+- [Sequence & SSD diagram](https://miro.com/app/board/uXjVLGHXk4Y=/)
 ## Design Diagrams
 
